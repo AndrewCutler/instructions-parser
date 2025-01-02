@@ -1,6 +1,7 @@
 import spacy
 from spacy.matcher import Matcher
 from spacy.tokens import Token
+from datetime import datetime 
 
 dose_forms = ["tab", "tabs", "tablet", "tablets", "cap",
               "caps", "capsule", "capsules", "caplet", "caplets"]
@@ -94,8 +95,8 @@ def main():
     # if (dose_match is not None and dose_form_match is not None and route_match is not None and frequency_match is not None):
     if (True):
         print(text, '\n', dose_match, dose_form_match, route_match, frequency_match)
-        # with open('data.txt', 'w') as file:
-        #     file.write(f'({text}, [{dose_match}, {dose_form_match}, {route_match}, {frequency_match}])')
+        with open('data-' + datetime.now().strftime("%Y-%m-%d_%H-%M-%S") + '.txt', 'w') as file:
+            file.write(f'({text}, [{dose_match}, {dose_form_match}, {route_match}, {frequency_match}])')
     else:
         print('TODO: write to separate file')
 
